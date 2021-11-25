@@ -74,8 +74,8 @@ def probe(def_idx, top_k, pred_type, act_neuron, tf_idx):
 def run_overall():
     # config
     # def_key = ['def_1','def_2','def_3','def_4','def_5']
-    def_key = ['def_1']
-    write_path = 'neuron_effect_to_model_performance/positive_neuron_on_true_prediction_def_1.json'
+    def_key = ['def_5']
+    write_path = 'neuron_effect_to_model_performance/negative_neuron_on_false_prediction_def_5.json'
     
     
     # top 20
@@ -83,7 +83,7 @@ def run_overall():
     results = {'def_1':{},'def_2':{},'def_3':{},'def_4':{},'def_5':{}}
     for def_idx in def_key:
         for top_i in top_k:
-            accuracy = probe(def_idx, top_i, 'true_prediction', true_neuron, true_false_index)
+            accuracy = probe(def_idx, top_i, 'false_prediction', false_neuron, true_false_index)
             if top_i not in results[def_idx]:
                 results[def_idx][top_i] = {'accuracy':0}
             results[def_idx][top_i]['accuracy'] = accuracy
